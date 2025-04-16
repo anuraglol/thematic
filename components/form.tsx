@@ -10,7 +10,6 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -56,10 +55,11 @@ export function LoginForm({
                   <FormItem>
                     <FormLabel>Theme</FormLabel>
                     <FormControl>
-                      <Input placeholder="nth" {...field} />
+                      <Input placeholder="a book about samurais" {...field} />
                     </FormControl>
                     <FormDescription>
-                      fill wtv allat bs you want here
+                      Go on, decribe what you desire in the form of words. And
+                      your wish shall be fulfilled.
                     </FormDescription>
                     <FormMessage />
                   </FormItem>
