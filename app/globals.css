@@ -118,5 +118,6 @@
   }
   body {
     @apply bg-background text-foreground;
+    background-image: url("https://res.cloudinary.com/dzheectoe/image/upload/v1744831096/lg3kbdvwssjgmowxjgb8.png");
   }
 }
