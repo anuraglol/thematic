@@ -23,6 +23,7 @@ export async function POST(req: Request) {
     - author
     - mood: a poetic one-liner capturing the book’s emotional tone
     - reason: a sentence explaining why it fits the theme
+    - link: a wikipedia link for the books
     
     Do not include anything outside the array.
     `,

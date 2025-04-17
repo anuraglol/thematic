@@ -3,6 +3,7 @@
 import { LoginForm } from "@/components/form";
 import { handleFormSubmit } from "@/lib/utils";
 import { useMutation } from "@tanstack/react-query";
+import Link from "next/link";
 
 export default function Home() {
   const { data, isPending, mutate } = useMutation({
@@ -19,9 +20,16 @@ export default function Home() {
 
           <div className="flex flex-col gap-1">
             {data?.map((d, i) => (
-              <div className="text-white font-medium italic" key={i}>
-                {d.title}
-              </div>
+              <Link
+                href={d.link}
+                target="_blank"
+                rel="noopener norefferer"
+                key={i}
+              >
+                <div className="text-white font-medium italic hover:underline">
+                  {d.title}
+                </div>
+              </Link>
             ))}
           </div>
         </div>

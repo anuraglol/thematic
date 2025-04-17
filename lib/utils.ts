@@ -17,6 +17,7 @@ export const responseSchema = z.array(
     author: z.string(),
     mood: z.string(),
     reason: z.string(),
+    link: z.string().url(),
   })
 );
 
