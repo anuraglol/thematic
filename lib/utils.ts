@@ -17,16 +17,17 @@ export const responseSchema = z.array(
     author: z.string(),
     mood: z.string(),
     reason: z.string(),
-  }),
+  })
 );
 
-export const handleFormSubmit = async (values: z.infer<typeof formSchema>) => {
+export type TResponse = z.infer<typeof responseSchema>;
+export type TForm = z.infer<typeof formSchema>;
+
+export const handleFormSubmit = async (values: TForm) => {
   const { data } = await axios.post("/api/gen", {
     theme: values.theme,
   });
 
   const parsed = responseSchema.parse(data);
-  console.log(parsed);
-
   return parsed;
 };

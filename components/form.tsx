@@ -1,6 +1,6 @@
 "use client";
 
-import { cn, formSchema } from "@/lib/utils";
+import { cn, formSchema, TForm, TResponse } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -29,7 +29,7 @@ import { UseMutateFunction } from "@tanstack/react-query";
 import { FC } from "react";
 
 type LoginFormProps = {
-  mutate: UseMutateFunction<any, any, any, any>;
+  mutate: UseMutateFunction<TResponse, Error, TForm, unknown>;
   isPending: boolean;
 };
 
@@ -44,7 +44,7 @@ export const LoginForm: FC<LoginFormProps> = ({ mutate, isPending }) => {
   return (
     <div
       className={cn(
-        "flex flex-col gap-6 w-[36rem] backdrop-blur-xl bg-white/5 border border-white/10 rounded-2xl shadow-md p-6",
+        "flex flex-col gap-6 w-[36rem] backdrop-blur-xl bg-white/5 border border-white/10 rounded-2xl shadow-md p-6"
       )}
     >
       <Card className="bg-transparent border border-white/10">
