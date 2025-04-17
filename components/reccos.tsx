@@ -2,10 +2,10 @@ import { Card, CardContent } from "@/components/ui/card";
 import { useState } from "react";
 
 type BookCardProps = {
-  image: string;
-  title: string;
-  author: string;
-  description: string;
+  image?: string;
+  title?: string;
+  author?: string;
+  description?: string;
   extra?: string;
 };
 
@@ -28,7 +28,6 @@ export function BookCard({
           <h3 className="text-xl font-semibold">{title}</h3>
           <p className="text-sm text-white/70">{author}</p>
           <p className="text-sm text-white/60">{description}</p>
-          {extra && <p className="text-sm text-white/50 italic">{extra}</p>}
         </div>
       </CardContent>
     </Card>

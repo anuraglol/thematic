@@ -1,6 +1,6 @@
 "use client";
 
-import { cn, formSchema, handleFormSubmit } from "@/lib/utils";
+import { cn, formSchema } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -25,11 +25,15 @@ import {
 } from "./ui/form";
 
 import { Loader2 } from "lucide-react";
+import { UseMutateFunction } from "@tanstack/react-query";
+import { FC } from "react";
 
-export function LoginForm({
-  className,
-  ...props
-}: React.ComponentPropsWithoutRef<"div">) {
+type LoginFormProps = {
+  mutate: UseMutateFunction<any, any, any, any>;
+  isPending: boolean;
+};
+
+export const LoginForm: FC<LoginFormProps> = ({ mutate, isPending }) => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -41,9 +45,7 @@ export function LoginForm({
     <div
       className={cn(
         "flex flex-col gap-6 w-[36rem] backdrop-blur-xl bg-white/5 border border-white/10 rounded-2xl shadow-md p-6",
-        className
       )}
-      {...props}
     >
       <Card className="bg-transparent border border-white/10">
         <CardHeader>
@@ -55,7 +57,7 @@ export function LoginForm({
         <CardContent>
           <Form {...form}>
             <form
-              onSubmit={form.handleSubmit(handleFormSubmit)}
+              onSubmit={form.handleSubmit((data) => mutate(data))}
               className="space-y-8"
             >
               <FormField
@@ -84,6 +86,7 @@ export function LoginForm({
                   type="submit"
                   className="bg-white/10 border border-white/20 text-white hover:bg-white/20 w-full cursor-pointer"
                 >
+                  {isPending && <Loader2 className="animate-spin" />}
                   Submit
                 </Button>
               </div>
@@ -93,4 +96,4 @@ export function LoginForm({
       </Card>
     </div>
   );
-}
+};

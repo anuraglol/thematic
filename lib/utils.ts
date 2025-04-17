@@ -17,7 +17,7 @@ export const responseSchema = z.array(
     author: z.string(),
     mood: z.string(),
     reason: z.string(),
-  })
+  }),
 );
 
 export const handleFormSubmit = async (values: z.infer<typeof formSchema>) => {
